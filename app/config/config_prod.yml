@@ -13,10 +13,10 @@ doctrine:
             auto_generate_proxy_classes: '%kernel.debug%'
             naming_strategy: doctrine.orm.naming_strategy.underscore
             auto_mapping: true
-#    orm:
-#        metadata_cache_driver: apc
-#        result_cache_driver: apc
-#        query_cache_driver: apc
+    orm:
+        metadata_cache_driver: apc
+        result_cache_driver: apc
+        query_cache_driver: apc
 
 monolog:
     handlers:
