@@ -2,30 +2,51 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Blog\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use OC\PlatformBundle\Entity\Advert;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CrudController extends Controller{
     /**
-     * @Route("/create/{id}", name="create")
+     * @Route("/create", name="create")
      */
-    public function createAction(Request $request, $id)
+    public function createAction(Request $request)
     {
+        // creates a task and gives it some dummy data for this example
         $date = new \DateTime();
         $article = new Post();
-        $article->setTitre("Mon premier article");
-        $article->setContenu("Voici mon premier article");
+        $article->setContenu("");
+        $article->setTitre("");
         $article->setUrl("art".$date->getTimestamp());
-        $article->getDate(new \DateTime());
+        $article->setDate(new \DateTime());
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($article);
-        $em->flush();
-        // replace this example code with whatever you need
-        return $this->render('default/post.html.twig', [
-            'var' => $id,
-        ]);
+        $form = $this->createFormBuilder($article)
+            ->add('titre', TextType::class, array('label'=>'Titre de l\'article'))
+            ->add('contenu', TextareaType::class, array('label'=>'Contenu de l\'article'))
+            ->add('date', DateType::class)
+            ->add('save', SubmitType::class, array('label' => 'Créer l\'article'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $article = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            //return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('default/create.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**

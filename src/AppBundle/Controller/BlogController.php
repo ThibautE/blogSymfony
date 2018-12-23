@@ -27,9 +27,8 @@ class BlogController extends Controller{
         $date = new \DateTime();
         $article = new Post();
         $article->setTitre("Mon premier article");
-        $article->setContenu("Voici mon premier article");
         $article->setUrl("art".$date->getTimestamp());
-        $article->getDate(new \DateTime());
+        $article->setDate(new \DateTime());
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($article);
