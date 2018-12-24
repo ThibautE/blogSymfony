@@ -51,10 +51,19 @@ sensio_framework_extra:
    router:
         annotations: false
 
+stof_doctrine_extensions:
+    default_locale: fr
+    translation_fallback: true
+    orm:
+        default:
+            tree: true
+            timestampable: false
+            sluggable: true
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: AppBundle\Entity\Blog\User
+    user_class: AppBundle\Entity\User
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"

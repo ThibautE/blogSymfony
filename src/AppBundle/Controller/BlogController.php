@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Blog\Post;
+use AppBundle\AppBundle;
+use AppBundle\Entity\Article;
+use AppBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,29 +15,27 @@ class BlogController extends Controller{
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $query = $em ->createQuery(
+            'SELECT articles
+            FROM AppBundle:Article articles
+            ORDER BY articles.date'
+        )->setMaxResults(10);
+        $articles = $query->getResult();
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'articles' => $articles,
         ]);
     }
 
     /**
-     * @Route("/post/{id}", name="post")
+     * @Route("/post/{url}", name="post")
      */
-    public function postAction(Request $request, $id)
+    public function postAction(Request $request, $url)
     {
-        $date = new \DateTime();
-        $article = new Post();
-        $article->setTitre("Mon premier article");
-        $article->setUrl("art".$date->getTimestamp());
-        $article->setDate(new \DateTime());
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($article);
-        $em->flush();
-        // replace this example code with whatever you need
-        return $this->render('default/post.html.twig', [
-            'var' => $id,
+        $em= $this->getDoctrine()->getManager();
+        $article = $em->getRepository('AppBundle:Article')->findOneByUrl($url);
+        return $this->render('default/post.html.twig',[
+            "article"=>$article
         ]);
     }
 
@@ -55,9 +55,15 @@ class BlogController extends Controller{
      */
     public function listArticlesAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $query = $em ->createQuery(
+            'SELECT articles
+            FROM AppBundle:Article articles
+            ORDER BY articles.date'
+        );
+        $articles = $query->getResult();
         return $this->render('default/allArticles.html.twig', [
-
+            'articles' => $articles,
         ]);
     }
 

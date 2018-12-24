@@ -1,12 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1> Hello</h1>
-                {{ var }}
-            </div>
-        </div>
+    <div id="editArticle" class="col-md-8 offset-2">
+        <h1>Titre : {{article.titre}}</h1>
+
+        <p>Contenu : {{ article.contenu }}</p>
     </div>
 {% endblock %}

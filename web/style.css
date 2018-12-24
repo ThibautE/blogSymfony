@@ -7,6 +7,11 @@ h1{
     height: 96px;
 }
 
+#titre a{
+    text-decoration: none;
+    color: #fff;
+}
+
 .menu #titre {
     display: inline-block;
     height: 96px;
@@ -17,10 +22,17 @@ h1{
     margin-left: 20px;
 }
 
+/* create article */
+
 #form_create{
     width: 80%;
-    margin-left: 10%;
+    margin-top: 4%;
+    text-align: left;
+}
+
+#form_create h3{
     text-align: center;
+    text-decoration: underline;
 }
 
 #form_create input, textarea{
@@ -33,7 +45,7 @@ h1{
 }
 
 #form_create div{
-    margin-top: 2%;
+    margin-top: 3%;
     overflow: auto;
 }
 
@@ -44,6 +56,18 @@ h1{
 .align-items-center button{
     width: 30%;
     float: right;
+}
+
+/* Edition article */
+
+#editArticle{
+    margin-top: 2%;
+}
+
+/* Footer */
+
+footer{
+    margin-bottom: 0px !important;
 }
 
 

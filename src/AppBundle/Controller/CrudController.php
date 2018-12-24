@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Blog\Post;
+use AppBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,11 +21,9 @@ class CrudController extends Controller{
     public function createAction(Request $request)
     {
         // creates a task and gives it some dummy data for this example
-        $date = new \DateTime();
-        $article = new Post();
+        $article = new Article();
         $article->setContenu("");
         $article->setTitre("");
-        $article->setUrl("art".$date->getTimestamp());
         $article->setDate(new \DateTime());
 
         $form = $this->createFormBuilder($article)
@@ -51,12 +49,14 @@ class CrudController extends Controller{
     }
 
     /**
-     * @Route("/update/{idArticle}", name="update")
+     * @Route("/edit/{idArticle}", name="edit")
      */
-    public function updateAction(Request $request, $idArticle)
+    public function editAction(Request $request, $idArticle)
     {
-        return $this->render('default/update.html.twig', [
-            'var' => $idArticle,
+        $em= $this->getDoctrine()->getManager();
+        $article = $em->find('AppBundle:Article',$idArticle);
+        return $this->render('default/edit.html.twig',[
+            "article"=>$article
         ]);
     }
 
@@ -65,8 +65,15 @@ class CrudController extends Controller{
      */
     public function manageAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em ->createQuery(
+            'SELECT articles
+            FROM AppBundle:Article articles
+            ORDER BY articles.date'
+        );
+        $articles = $query->getResult();
         return $this->render('default/manage.html.twig', [
-
+            'articles' => $articles,
         ]);
     }
 
@@ -83,7 +90,7 @@ class CrudController extends Controller{
         }else{
             throw $this->createNotFoundException('Pas d\'article avec cet id :', $idArticle);
         }
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('accueil');
     }
 
 
