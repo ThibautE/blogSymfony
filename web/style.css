@@ -16,3 +16,37 @@ h1{
     margin-top: 22px;
     margin-left: 20px;
 }
+
+#form_create{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#form_create input, textarea{
+    float: right;
+    width: 70%;
+}
+
+#form_create textarea{
+    height: 200px;
+}
+
+#form_create div{
+    margin-top: 2%;
+    overflow: auto;
+}
+
+#form_create .submit{
+    width: 50%;
+}
+
+.align-items-center button{
+    width: 30%;
+    float: right;
+}
+
+
+.footer-nav a{
+    color: white !important;
+}

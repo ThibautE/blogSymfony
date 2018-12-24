@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends Controller{
     /**
-     * @Route("/index", name="index")
+     * @Route("/", name="accueil")
      */
     public function indexAction(Request $request)
     {
@@ -36,6 +36,50 @@ class BlogController extends Controller{
         // replace this example code with whatever you need
         return $this->render('default/post.html.twig', [
             'var' => $id,
+        ]);
+    }
+
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexionAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/connexion.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/allArticles", name="allArticles")
+     */
+    public function listArticlesAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/allArticles.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contactAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/contact.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/about", name="about")
+     */
+    public function aboutAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/about.html.twig', [
+
         ]);
     }
 

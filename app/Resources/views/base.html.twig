@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}" />
-            <link rel="stylesheet" type="text/css" href="{{ asset('layout.css') }}" />
-        {% endblock %}
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap.min.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('layout.css') }}"/>
+
+    {% endblock %}
+    <title>{% block title %}Blog de Thibaut{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<header>
+    <div id="row">
+        <div class="menu">
+            <div id="titre">Blog de Thibaut</div>
+            <nav id="nav-wrap">
+                <ul id="nav" class="nav">
+                    <li><a href="{{ path('accueil') }}">Accueil</a></li>
+                    <li><a href="{{ path('allArticles') }}">Tous les articles</a></li>
+                    <li><a href="{{ path('create') }}">Ecrire un article</a></li>
+                    <li><a href="{{ path('manage') }}">Gérer les articles</a></li>
+                    <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+<footer class="py-3 bg-secondary">
+    <div class="container">
+        <ul class="footer-nav">
+            <li><a href="{{ path('accueil') }}">Accueil</a></li>
+            <li><a href="{{ path('allArticles') }}">Tous les articles</a></li>
+            <li><a href="{{ path('contact') }}">Contact</a></li>
+            <li><a href="{{ path('about') }}">À propos</a></li>
+        </ul>
+    </div>
+    <ul class="copyright">
+        <li>Copyright © 2019 Thibaut Etienne</li>
+    </ul>
+</footer>
+</body>
 </html>

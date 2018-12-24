@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 
 class CrudController extends Controller{
     /**
@@ -29,7 +31,6 @@ class CrudController extends Controller{
         $form = $this->createFormBuilder($article)
             ->add('titre', TextType::class, array('label'=>'Titre de l\'article'))
             ->add('contenu', TextareaType::class, array('label'=>'Contenu de l\'article'))
-            ->add('date', DateType::class)
             ->add('save', SubmitType::class, array('label' => 'Créer l\'article'))
             ->getForm();
 
@@ -41,7 +42,7 @@ class CrudController extends Controller{
             $em->persist($article);
             $em->flush();
 
-            //return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('accueil');
         }
 
         return $this->render('default/create.html.twig', array(
@@ -56,6 +57,16 @@ class CrudController extends Controller{
     {
         return $this->render('default/update.html.twig', [
             'var' => $idArticle,
+        ]);
+    }
+
+    /**
+     * @Route("/manage", name="manage")
+     */
+    public function manageAction(Request $request)
+    {
+        return $this->render('default/manage.html.twig', [
+
         ]);
     }
 
