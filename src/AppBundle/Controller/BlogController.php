@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\AppBundle;
 use AppBundle\Entity\Article;
-use AppBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,9 +16,7 @@ class BlogController extends Controller{
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em ->createQuery(
-            'SELECT a
-            FROM AppBundle:Article a
-            ORDER BY a.date'
+            'SELECT a FROM AppBundle:Article a ORDER BY a.date'
         )->setMaxResults(10);
         $articles = $query->getResult();
         return $this->render('default/index.html.twig', [
