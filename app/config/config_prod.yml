@@ -6,6 +6,12 @@ imports:
 doctrine:
     dbal:
         url: "%env(DATABASE_URL)%"
+        driver: '%env(SYMFONY_BD_DRIVER)%'
+        host: '%env(SYMFONY_BD_HOST)%'
+        port: '%env(SYMFONY_BD_PORT)%'
+        dbname: '%env(SYMFONY_BD_NAME)%'
+        user: '%env(SYMFONY_BD_USER)%'
+        password: '%env(SYMFONY_BD_PASS)%'
         charset: UTF8
 
     orm:
