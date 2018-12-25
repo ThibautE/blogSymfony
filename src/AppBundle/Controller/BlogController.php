@@ -16,7 +16,9 @@ class BlogController extends Controller{
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em ->createQuery(
-            'SELECT a FROM AppBundle:Article a ORDER BY a.date'
+            'SELECT a
+            FROM AppBundle:Article a
+            ORDER BY a.date'
         )->setMaxResults(10);
         $articles = $query->getResult();
         return $this->render('default/index.html.twig', [
