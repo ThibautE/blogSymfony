@@ -1,12 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <div id="editArticle" class="col-md-8 offset-2">
-    <h1>Titre : {{article.titre}}</h1>
+    <div class="col-md-8 offset-md-2" id="form_create">
+        <h3>Rédigez votre article</h3>
+        {{ form_start(form) }}
 
-    <p>Contenu : {{ article.contenu }}</p>
+        {{ form_errors(form) }}
+        {{ form_row(form.titre) }}
+        <div id="contenu_form">
+            {{ form_row(form.contenu) }}
+        </div>
+        <div class="align-items-center">
+            {{ form_widget(form.save, {'attr':{'class': 'button-publish btn btn-secondary'}}) }}
+        </div>
+        {{ form_end(form) }}
+        <script src="/ckeditor/ckeditor.js"></script>
 
-        <a class="btn btn-primary"href="/admin/edit/{{ article.id }}" >Editer</a>
-        <a class="btn btn-danger"href="/delete/{{ article.id }}" onclick="return confirm('Voulez vous vraiment supprimer cet article? ')"  >Supprimer</a>
-  </div>
+        <script>
+            CKEDITOR.replace('form_contenu');
+        </script>
+
+    </div>
 {% endblock %}

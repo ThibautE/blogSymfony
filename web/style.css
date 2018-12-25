@@ -22,6 +22,16 @@ h1{
     margin-left: 20px;
 }
 
+/* All articles */
+
+.article_apercu{
+    width: 100%;
+    border: 2px solid #afadad;
+    padding: 2%;
+    margin-top: 1%;
+}
+
+
 /* create article */
 
 #form_create{
@@ -45,7 +55,6 @@ h1{
 }
 
 #form_create div{
-    margin-top: 3%;
     overflow: auto;
 }
 
@@ -56,6 +65,11 @@ h1{
 .align-items-center button{
     width: 30%;
     float: right;
+}
+
+#contenu_form{
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 /* Edition article */

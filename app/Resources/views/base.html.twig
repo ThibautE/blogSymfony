@@ -10,6 +10,7 @@
     {% endblock %}
     <title>{% block title %}Blog de Thibaut{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
 </head>
 <body>
 <header>
@@ -21,7 +22,6 @@
                     <li><a href="{{ path('accueil') }}">Accueil</a></li>
                     <li><a href="{{ path('allArticles') }}">Tous les articles</a></li>
                     <li><a href="{{ path('create') }}">Ecrire un article</a></li>
-                    <li><a href="{{ path('manage') }}">Gérer les articles</a></li>
                     <li><a href="{{ path('connexion') }}">Connexion</a></li>
                 </ul>
             </nav>

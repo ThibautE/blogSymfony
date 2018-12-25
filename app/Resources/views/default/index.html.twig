@@ -7,9 +7,9 @@
         <h2>
             <a href="/post/{{ article.url }}">{{article.titre}}</a>
         </h2>
-        <p><span class="glyphicon glyphicon-time"></span> {{ article.date.format('d/m/Y G:ia') }}</p>
+        <p>{{ article.date.format('d/m/Y à G:i') }}</p>
 
-        <p>{{ article.contenu }}</p>
+        {{ article.contenu|markdown }}
         <a class="btn btn-primary" href="/post/{{ article.url }}">Lire l'article<span class="glyphicon glyphicon-chevron-right"></span></a>
     {% endfor %}
     </div>

@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use OC\PlatformBundle\Entity\Advert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -55,26 +54,32 @@ class CrudController extends Controller{
     {
         $em= $this->getDoctrine()->getManager();
         $article = $em->find('AppBundle:Article',$idArticle);
-        return $this->render('default/edit.html.twig',[
-            "article"=>$article
-        ]);
-    }
 
-    /**
-     * @Route("/manage", name="manage")
-     */
-    public function manageAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em ->createQuery(
-            'SELECT articles
-            FROM AppBundle:Article articles
-            ORDER BY articles.date'
-        );
-        $articles = $query->getResult();
-        return $this->render('default/manage.html.twig', [
-            'articles' => $articles,
+        $form_article = new Article();
+        $form_article->setTitre($article->getTitre());
+        $form_article->setContenu($article->getContenu());
+
+        $form = $this->createFormBuilder($form_article)
+            ->add('titre', TextType::class)
+            ->add('contenu', TextareaType::class)
+            ->add('save', SubmitType::class, array('label' => 'Modifier l\'article'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article->setContenu($form['contenu']->getData());
+            $article->setTitre($form['titre']->getData());
+            dump($article);
+            $em->flush();
+            return $this->redirectToRoute('allArticles'); //retourner à la page des articles
+        }
+
+        return $this->render('default/edit.html.twig',[
+            'form' => $form->createView(),
         ]);
+
+
     }
 
     /**

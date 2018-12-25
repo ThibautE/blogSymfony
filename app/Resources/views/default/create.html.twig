@@ -1,17 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="col-md-8 offset-md-1" id="form_create">
-        <h3>Rédigez votre article</h3>
+    <div class="col-md-8 offset-md-2" id="form_create">
+        <h3>Modifier votre article</h3>
         {{ form_start(form) }}
 
         {{ form_errors(form) }}
         {{ form_row(form.titre) }}
-        {{ form_row(form.contenu) }}
+        <div id="contenu_form">
+            {{ form_row(form.contenu) }}
+        </div>
+
+        <script src="ckeditor/ckeditor.js"></script>
+
 
         <div class="align-items-center">
             {{ form_widget(form.save, {'attr':{'class': 'button-publish btn btn-secondary'}}) }}
         </div>
         {{ form_end(form) }}
+        <script>
+            CKEDITOR.replace('form_contenu');
+        </script>
     </div>
 {% endblock %}
