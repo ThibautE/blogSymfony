@@ -6,11 +6,6 @@ imports:
 doctrine:
     dbal:
         url: "%env(DATABASE_URL)%"
-        host: 'ec2-46-137-97-96.eu-west-1.compute.amazonaws.com'
-        password: '0653356af7a2249641e7aa0157dd7d468885d381f8c2c6f330c5f0c3ae8b58b5'
-        dbname: 'da19e0k5nndu9m'
-        user: 'dsbceycpavpplk'
-        port: '5432'
         charset: UTF8
 
     orm:

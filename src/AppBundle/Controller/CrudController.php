@@ -21,7 +21,6 @@ class CrudController extends Controller{
     {
         // creates a task and gives it some dummy data for this example
         $article = new Article();
-        $article->setId(1);
         $article->setContenu("");
         $article->setTitre("");
         $article->setDate(new \DateTime());
