@@ -10,7 +10,7 @@
                 </h2>
                 <p><span class="glyphicon glyphicon-time"></span> {{ article.date.format('d/m/Y G:ia') }}</p>
 
-                <p>{{ article.contenu|markdown }}</p>
+                <div id="contenu-apercu">{{ article.contenu|markdown }}</div>
                 <a class="btn btn-primary" id="btnRead" href="/post/{{ article.url }}">Lire l'article<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         {% endfor %}
