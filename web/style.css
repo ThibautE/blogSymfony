@@ -26,11 +26,16 @@ h1{
 
 .article_apercu{
     width: 100%;
+    overflow: auto;
     border: 2px solid #afadad;
     padding: 2%;
     margin-top: 1%;
 }
 
+#btnRead{
+    float: right;
+    width: 22%;
+}
 
 /* create article */
 

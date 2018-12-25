@@ -3,14 +3,16 @@
 {% block body %}
     <h3>Bienvenue sur mon blog personnel!</h3>
     <div class="col-md-8 offset-2">
-    {% for article in articles %}
-        <h2>
-            <a href="/post/{{ article.url }}">{{article.titre}}</a>
-        </h2>
-        <p>{{ article.date.format('d/m/Y à G:i') }}</p>
+        {% for article in articles %}
+            <div class="article_apercu">
+                <h2>
+                    <a href="/post/{{ article.url }}">{{article.titre}}</a>
+                </h2>
+                <p><span class="glyphicon glyphicon-time"></span> {{ article.date.format('d/m/Y G:ia') }}</p>
 
-        {{ article.contenu|markdown }}
-        <a class="btn btn-primary" href="/post/{{ article.url }}">Lire l'article<span class="glyphicon glyphicon-chevron-right"></span></a>
-    {% endfor %}
+                <p>{{ article.contenu|markdown }}</p>
+                <a class="btn btn-primary" id="btnRead" href="/post/{{ article.url }}">Lire l'article<span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
