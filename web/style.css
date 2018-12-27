@@ -12,6 +12,11 @@ h1{
     color: #fff;
 }
 
+.top_titre{
+    text-align: center;
+    margin: 2%;
+}
+
 .menu #titre {
     display: inline-block;
     height: 96px;
@@ -27,7 +32,7 @@ h1{
 .article_apercu{
     width: 100%;
     overflow: auto;
-    border: 2px solid #afadad;
+    border-bottom: 1px solid #383232;
     padding: 2%;
     margin-top: 1%;
 }
@@ -42,13 +47,7 @@ h1{
 
 #form_create{
     width: 80%;
-    margin-top: 4%;
     text-align: left;
-}
-
-#form_create h3{
-    text-align: center;
-    text-decoration: underline;
 }
 
 #form_create input, textarea{
@@ -64,7 +63,7 @@ h1{
     width: 50%;
 }
 
-.align-items-center button{
+.right_btn button{
     width: 30%;
     float: right;
 }

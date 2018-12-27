@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste de tous les articles</h1>
+    <h1 class="top_titre">Liste de tous les articles</h1>
     <div class="col-md-8 offset-2">
         {% for article in articles %}
             <div class="article_apercu">
                 <h2>
                     <a href="/post/{{ article.url }}">{{article.titre}}</a>
                 </h2>
-                <p><span class="glyphicon glyphicon-time"></span> {{ article.date.format('d/m/Y G:ia') }}</p>
+                <p><span class="glyphicon glyphicon-time"></span> {{ article.date.format('d/m/Y G:i') }}</p>
 
                 <div id="contenu-apercu">{{ article.contenu|markdown }}</div>
                 <a class="btn btn-primary" id="btnRead" href="/post/{{ article.url }}">Lire l'article<span class="glyphicon glyphicon-chevron-right"></span></a>

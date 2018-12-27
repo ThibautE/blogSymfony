@@ -3,11 +3,12 @@
 {% block body %}
     <div id="editArticle" class="col-md-8 offset-2">
         <h1>Titre : {{article.titre}}</h1>
+        <h5>{{article.date.format('d/m/Y G:i')}}</h5>
 
-        <p>Contenu : {{ article.contenu|markdown }}</p>
+        <p>{{ article.contenu|markdown }}</p>
 
         <a class="btn btn-primary"href="/edit/{{ article.id }}" >Editer</a>
-        <a class="btn btn-danger"href="/delete/{{ article.id }}" onclick="return confirm('Voulez vous vraiment supprimer cet article? ')"  >Supprimer</a>
+        <a class="btn btn-danger"href="/delete/{{ article.id }}" onclick="return confirm('Voulez vous vraiment supprimer cet article?')"  >Supprimer</a>
     </div>
 
 

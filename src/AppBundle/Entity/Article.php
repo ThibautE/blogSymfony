@@ -51,14 +51,6 @@ class Article
     private $url;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="text", nullable=true)
-     */
-    private $photo;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -162,30 +154,6 @@ class Article
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     *
-     * @return Article
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
     }
 }
 
