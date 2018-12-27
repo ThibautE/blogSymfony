@@ -2,7 +2,7 @@
 
 {% block body %}
     <div id="editArticle" class="col-md-8 offset-2">
-        <h1>Titre : {{article.titre}}</h1>
+        <h1>{{article.titre}}</h1>
         <h5>{{article.date.format('d/m/Y G:i')}}</h5>
 
         <p>{{ article.contenu|markdown }}</p>

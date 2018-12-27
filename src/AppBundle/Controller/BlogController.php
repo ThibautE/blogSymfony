@@ -21,8 +21,19 @@ class BlogController extends Controller{
             ORDER BY a.date'
         )->setMaxResults(10);
         $articles = $query->getResult();
+
+        /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $articles,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 5)
+        );
+
         return $this->render('default/index.html.twig', [
-            'articles' => $articles,
+            'articles' => $result,
         ]);
     }
 
@@ -43,7 +54,6 @@ class BlogController extends Controller{
      */
     public function connexionAction(Request $request)
     {
-        // replace this example code with whatever you need
         return $this->render('default/connexion.html.twig', [
 
         ]);
@@ -60,9 +70,20 @@ class BlogController extends Controller{
             FROM AppBundle:Article articles
             ORDER BY articles.date'
         );
+
+        /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 5)
+        );
+
         $articles = $query->getResult();
         return $this->render('default/allArticles.html.twig', [
-            'articles' => $articles,
+            'articles' => $result,
         ]);
     }
 

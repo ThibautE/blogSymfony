@@ -17,6 +17,15 @@ h1{
     margin: 2%;
 }
 
+.navigation{
+    margin-top: 2%;
+    margin-left: 40%;
+}
+
+.pagination{
+    margin-bottom: 0 !important;
+}
+
 .menu #titre {
     display: inline-block;
     height: 96px;
@@ -99,6 +108,13 @@ h1{
 
 ul{
     list-style-type: none;
+}
+
+/* Connexion */
+
+#connexion{
+    margin-top: 5%;
+    text-align: center;
 }
 
 /* Footer */

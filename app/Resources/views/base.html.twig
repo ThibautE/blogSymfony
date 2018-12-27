@@ -21,8 +21,14 @@
                 <ul id="nav" class="nav">
                     <li><a href="{{ path('accueil') }}">Accueil</a></li>
                     <li><a href="{{ path('allArticles') }}">Tous les articles</a></li>
-                    <li><a href="{{ path('create') }}">Ecrire un article</a></li>
-                    <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <li><a href="{{ path('create') }}">Ecrire un article</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN')==false %}
+                        <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                    {% else %}
+                        <li><a href="{{ path('connexion') }}">Mon compte</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

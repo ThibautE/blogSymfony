@@ -1,5 +1,16 @@
 {% extends 'base.html.twig' %}
+    {% block body %}
+        <div id="connexion">
 
-{% block body %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
+                <p>Adresse mail du compte : {{ app.user.email }}</p>
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                {{ render(controller('FOSUserBundle:Security:login')) }}
+            {% endif %}
+        </div>
+    {% endblock %}
 
-{% endblock %}
