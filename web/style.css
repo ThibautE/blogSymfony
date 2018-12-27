@@ -95,6 +95,12 @@ h1{
     white-space: nowrap;
 }
 
+/* about */
+
+ul{
+    list-style-type: none;
+}
+
 /* Footer */
 
 footer{

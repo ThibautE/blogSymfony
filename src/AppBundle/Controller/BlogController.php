@@ -67,17 +67,6 @@ class BlogController extends Controller{
     }
 
     /**
-     * @Route("/contact", name="contact")
-     */
-    public function contactAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/contact.html.twig', [
-
-        ]);
-    }
-
-    /**
      * @Route("/about", name="about")
      */
     public function aboutAction(Request $request)
