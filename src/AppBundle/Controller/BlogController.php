@@ -16,9 +16,9 @@ class BlogController extends Controller{
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em ->createQuery(
-            'SELECT a
-            FROM AppBundle:Article a
-            ORDER BY a.date'
+            'SELECT articles
+            FROM AppBundle:Article articles
+            ORDER BY articles.date DESC'
         )->setMaxResults(10);
         $articles = $query->getResult();
 
@@ -68,7 +68,7 @@ class BlogController extends Controller{
         $query = $em ->createQuery(
             'SELECT articles
             FROM AppBundle:Article articles
-            ORDER BY articles.date'
+            ORDER BY articles.date DESC'
         );
 
         /**

@@ -8,10 +8,10 @@
                 <h2>
                     <a href="/post/{{ article.url }}">{{article.titre}}</a>
                 </h2>
-                <p><span class="glyphicon glyphicon-time"></span> {{ article.date.format('d/m/Y G:i') }}</p>
+                <p>{{ article.date.format('d/m/Y G:i') }}</p>
 
-                <div id="contenu-apercu">{{ article.contenu|markdown }}</div>
-                <a class="btn btn-primary" id="btnRead" href="/post/{{ article.url }}">Lire l'article<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <div class="contenu-apercu">{{ article.contenu|markdown }}</div>
+                <a class="btn btn-primary btnRead" href="/post/{{ article.url }}">Lire l'article</a>
             </div>
         {% endfor %}
     </div>
