@@ -5,12 +5,12 @@
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle"
+            "": "src/"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\": "tests/" },
+        "psr-4": { "": "src/" },
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
@@ -45,15 +45,11 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
-        "warmup": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
-        ],
         "post-install-cmd": [
-            "@symfony-scripts","bin/console doctrine:schema:update --force"
+            "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts","bin/console doctrine:schema:update --force"
+            "@symfony-scripts"
         ]
     },
     "config": {
@@ -62,7 +58,6 @@
         },
         "sort-packages": true
     },
-
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
