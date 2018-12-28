@@ -22,6 +22,7 @@ doctrine:
 monolog:
     handlers:
         main:
+            type: stream
             action_level: error
             handler: nested
         nested:
