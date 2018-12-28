@@ -5,12 +5,12 @@
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "AppBundle\\": "src/AppBundle"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },,
     "autoload-dev": {
-        "psr-4": { "": "src/" },
+        "psr-4": { "Tests\\": "tests/" },
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
