@@ -2,19 +2,21 @@
 
 {% block body %}
     <div class="col-md-8 offset-md-2" id="form_create">
-        <h1 class="top_titre">Modifier votre article</h1>
+        <h1 class="top_titre">Rédigez votre article</h1>
         {{ form_start(form) }}
-
+        <div id="form">
         {{ form_errors(form) }}
-        {{ form_row(form.titre) }}
-        <div id="contenu_form">
-            {{ form_row(form.contenu) }}
+
+            {{ form_row(form.titre) }}
+            <div id="contenu_form">
+                {{ form_row(form.contenu) }}
+            </div>
         </div>
 
-        <script src="ckeditor/ckeditor.js"></script>
+        <script src="/ckeditor/ckeditor.js"></script>
 
 
-        <div class="align-items-center">
+        <div class="align-items-center right_btn">
             {{ form_widget(form.save, {'attr':{'class': 'button-publish btn btn-secondary'}}) }}
         </div>
         {{ form_end(form) }}

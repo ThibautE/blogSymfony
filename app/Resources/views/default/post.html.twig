@@ -2,13 +2,21 @@
 
 {% block body %}
     <div id="editArticle" class="col-md-8 offset-2">
-        <h1>{{article.titre}}</h1>
+        <div id="head_post">
+            <h1>{{article.titre}}</h1>
+            <div id="gestion">
+                <a class="btn btn-primary"href="/admin/edit/{{ article.id }}" >Modifier</a>
+                <a class="btn btn-danger"href="/admin/delete/{{ article.id }}" onclick="return confirm('Voulez vous vraiment supprimer cet article?')"  >Supprimer</a>
+            </div>
+        </div>
+
         <h5>{{article.date.format('d/m/Y G:i')}}</h5>
 
         <p>{{ article.contenu|markdown }}</p>
+        {% if is_granted('ROLE_ADMIN') %}
 
-        <a class="btn btn-primary"href="/edit/{{ article.id }}" >Editer</a>
-        <a class="btn btn-danger"href="/delete/{{ article.id }}" onclick="return confirm('Voulez vous vraiment supprimer cet article?')"  >Supprimer</a>
+        {% endif %}
+
     </div>
 
 

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CrudController extends Controller{
     /**
-     * @Route("/create", name="create")
+     * @Route("/admin/create", name="create")
      */
     public function createAction(Request $request)
     {
@@ -49,7 +49,7 @@ class CrudController extends Controller{
     }
 
     /**
-     * @Route("/edit/{idArticle}", name="edit")
+     * @Route("/admin/edit/{idArticle}", name="edit")
      */
     public function editAction(Request $request, $idArticle)
     {
@@ -84,7 +84,7 @@ class CrudController extends Controller{
     }
 
     /**
-     * @Route("/delete/{idArticle}", name="delete")
+     * @Route("/admin/delete/{idArticle}", name="delete")
      */
     public function deleteAction($idArticle)
     {
