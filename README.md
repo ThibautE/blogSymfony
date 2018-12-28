@@ -20,7 +20,7 @@ Contenu du projet
   
   * Permet de créer / modifier / supprimer un article en étant administrateur
   
-
+  * Validation W3c
 
 
 Commentaire sur le cours 
