@@ -12,10 +12,9 @@
             {% endif %}
         </div>
 
-
         <h5>{{article.date.format('d/m/Y G:i')}}</h5>
 
-        <p>{{ article.contenu|markdown }}</p>
+        {{ article.contenu|markdown }}
 
 
     </div>
