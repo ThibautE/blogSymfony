@@ -22,7 +22,7 @@
                     <li><a href="{{ path('accueil') }}">Accueil</a></li>
                     <li><a href="{{ path('allArticles') }}">Tous les articles</a></li>
                     {% if is_granted('ROLE_ADMIN')%}
-                        <li><a href="{{ path('create') }}">Ecrire un article</a></li>
+                        <li><a href="{{ path('create') }}">Écrire un article</a></li>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN')==false %}
                         <li><a href="{{ path('connexion') }}">Connexion</a></li>
