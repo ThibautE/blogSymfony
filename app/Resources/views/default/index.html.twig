@@ -6,7 +6,7 @@
         {% for article in articles %}
             <div class="article_apercu">
                 <h2>
-                    <a href="/post/{{ article.url }}">{{article.titre}}</a>
+                    <a class="lien" href="/post/{{ article.url }}">{{article.titre}}</a>
                 </h2>
                 <p>{{ article.date.format('d/m/Y G:i') }}</p>
 
